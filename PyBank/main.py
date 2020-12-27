@@ -1,5 +1,6 @@
 import os
 import csv
+import math
 
 #Path to collect data from the Bank Resources folder
 pybank_csv = os.path.join("Resources", "budget_data.csv")
@@ -8,7 +9,6 @@ pybank_csv = os.path.join("Resources", "budget_data.csv")
 with open(pybank_csv, "r") as csvfile:
     # CSV reader specifies delimiter and variable that holds contents
     csv_reader = csv.reader(csvfile, delimiter=",")
-
     print(csv_reader)
 
     # Read the header row first (skip this step if there is now header)
@@ -19,12 +19,15 @@ with open(pybank_csv, "r") as csvfile:
     for row in csv_reader:
         print(row[1])
 
+int(row[1])
+
 #Create a bucket for Total Months
 total_months = row.count
 print(total_months)
 
 #create a bucket for Total
-##print(total)
+sumamount = math.fsum(row[1])
+print(int(sumamount))
 
 #create a bucket for Average Change
 #average_change = mean(total)
@@ -54,7 +57,7 @@ with open(output_path, 'w', newline='') as csvfile:
 
     # And so on:
     csv_writer.writerow(['Total Months:', '86'])
-    csv_writer.writerow(['Total:', 'Need this figure'])
+    csv_writer.writerow(['Total:', 'sumamount'])
     csv_writer.writerow(['Average Change:', 'Need this figure'])
     csv_writer.writerow(['Greatest Increase in Profits:', 'Need this figure'])
     csv_writer.writerow(['Greatest Decrease in Profits:', 'Need this figure'])
