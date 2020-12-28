@@ -19,15 +19,33 @@ with open(pybank_csv, "r") as csvfile:
     for row in csv_reader:
         print(row[1])
 
-int(row[1])
 
 #Create a bucket for Total Months
-total_months = row.count
-print(total_months)
+
+bank = open(pybank_csv, "r")
+data = bank.readline()
+print(bank)
+data = bank.readlines()
+total_months = 0
+linecounter = 0
+for bank in data:
+    linecounter = linecounter + 1
+    
+print("The total number of months is", linecounter)
+
+for line in data:
+    r = line.split(",")
+    total_months = total_months + float(r[1])
+print("The total amount is", total_months)
+average = float(total_months / linecounter)
+print("The average change is ", "%.2f" % average)
+
+#print(total_months)
+#data['Profit/Losses'].average
 
 #create a bucket for Total
-sumamount = math.fsum(row[1])
-print(int(sumamount))
+#sumamount = math.fsum(row[1])
+#print(int(sumamount))
 
 #create a bucket for Average Change
 #average_change = mean(total)
@@ -56,9 +74,9 @@ with open(output_path, 'w', newline='') as csvfile:
     csv_writer.writerow(['-----------------------------'])
 
     # And so on:
-    csv_writer.writerow(['Total Months:', '86'])
-    csv_writer.writerow(['Total:', 'sumamount'])
-    csv_writer.writerow(['Average Change:', 'Need this figure'])
+    csv_writer.writerow(['Total Months:', linecounter])
+    csv_writer.writerow(['Total:', total_months])
+    csv_writer.writerow(['Average Change:', average])
     csv_writer.writerow(['Greatest Increase in Profits:', 'Need this figure'])
     csv_writer.writerow(['Greatest Decrease in Profits:', 'Need this figure'])
 
