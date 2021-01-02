@@ -59,8 +59,10 @@ for line in data:
     total = total + value
     max_value = max(max_value, value)
     min_value = min(min_value, value)
-print("The maximum change is:", "(" max_value ")")
-print("The minimum change is:", "(" min_value ")")
+print("The maximum change is:",  max_value )
+print("The minimum change is:",  min_value )
+
+#Create new variable for amount change
 
 
 #print(total_months)

@@ -1,6 +1,9 @@
 import os
 import csv
 import math
+import collections
+from collections import Counter
+
 
 #Path to collect data from the Bank Resources folder
 pypoll_csv = os.path.join("Resources", "election_data.csv")
@@ -19,6 +22,10 @@ with open(pypoll_csv, "r") as csvfile:
     #for row in csv_reader:
         #print(row[1])
 
+#Create list of candidates
+myList = ["Khan", 0, "Correy", 0, "O'Toohley", 0, "Li", 0]
+print(myList)
+
 
 #Create a bucket for Total Votes
 poll = open(pypoll_csv, "r")
@@ -35,6 +42,36 @@ for line in data:
     r = line.split(",")
     total_votes = total_votes + float(r[0])
 print("Total Votes:", votecounter)
+
+
+#count Khan candidate votes
+#khan_votes = collections.Counter()
+#for row in csv.reader(csvfile, delimiter=','):
+#    khan_votes[row[2]] += 1
+
+#print ('Khan received votes: %s' % khan_votes['Khan'])
+#print (khan_votes.most_common())
+
+
+khan_votes = 0
+correy_votes = 0
+tooley_votes = 0
+li_votes = 0
+#khan_result = Counter(khan_votes)
+#make a dictionary of candidates
+electionresults = {
+    "Khan": len(khan_votes),
+    "Correy": len(correy_votes),
+    "O'Tooley": len(tooley_votes),
+    "Li": len(li_votes)}
+#decide winner
+winner = (max(electionresults))
+
+print(len(khan_votes))
+
+
+
+
 #average = float(total_votes / votecounter)
 #print("The average change is: ", "%.2f" % average)
 
@@ -54,29 +91,11 @@ print("Total Votes:", votecounter)
 #    value = float(r[2])
 #    Khan = Khan + value
 
-
-
-
-#print(total_months)
-#data['Profit/Losses'].average
-
-#create a bucket for Total
-#sumamount = math.fsum(row[1])
-#print(int(sumamount))
-
-#create a bucket for Average Change
-#average_change = mean(total)
-
-#create a bucket for Greatest Increase in Profits
-#greatest_increase = 
-
-#create a bucket for Greatest Increase in Profits
-#greatest_decrease =
-        
+    
 # Specify the file to write to
 output_path = os.path.join("Output", "PyPoll_new.csv")
 # Preview Output
-PyBank_new = os.path.join("Output", "PyPoll_new.csv")
+PyPoll_new = os.path.join("Output", "PyPoll_new.csv")
 
 # Open the file using "write" mode. Specify the variable to hold the contents
 with open(output_path, 'w', newline='') as csvfile:
@@ -100,33 +119,4 @@ with open(output_path, 'w', newline='') as csvfile:
     csv_writer.writerow(['-----------------------------'])
     csv_writer.writerow(['Winner:', 'XX'])
 
-#Define the columns and rows
-#pybank_csv = []
-#Date = row[0]
-#Profit/Losses = row[1]
 
-#for row in pybank_csv:
-    #if row[0] == Date:
-        #print(row[0] + "Just Dates")
-
-#Find the total number of months in the dataset
-
-#The net total amount of "Profit/Losses" over the entire period
-
-#The average of the changes in "Profit/Losses" over the entire period
-
-#The greatest increase in profits (date and amount) over the entire period
-
-
-
-#minVal, maxVal = [], []
-    #for i in data:
-        #minVal.append(i[1])
-        #maxVal.append(i[2])
-
-#print min(minVal)
-#print max(maxVal)
-
-#The greatest decrease in losses (date and amount) over the entire period
-
-#Write this data to a new text file
