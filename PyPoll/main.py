@@ -20,6 +20,7 @@ li_percentage = 0
 tooley_percentage = 0
 correy_percentage = 0
 winner_percentage = 0
+winner = str
 
 #Open the CSV
 with open(pypoll_csv, "r") as csvfile:
@@ -74,7 +75,7 @@ with open(pypoll_csv, "r") as csvfile:
 
     for row in csv_reader:
         if candidate == 'Khan':
-            khan_votes = khan_votes + 1
+            khan_votes = float(khan_votes + 1)
     for row in csv_reader:        
         if candidate == "Li":
             li_votes = li_votes + 1
@@ -85,11 +86,12 @@ with open(pypoll_csv, "r") as csvfile:
         if candidate == "Correy":
             correy_votes = correy_votes + 1        
 
-    print ("Khan recieved: ", khan_votes, "votes")
-    print ("Li recieved: ", li_votes, "votes")
-    print ("O'Tooley recieved: ", tooley_votes, "votes")
-    print ("Correy recieved: ", correy_votes, "votes")
-
+    print ("Khan recieved: ", khan_votes, "votes", khan_percentage, "%")
+    print ("Li recieved: ", li_votes, "votes", li_percentage, "%")
+    print ("O'Tooley recieved: ", tooley_votes, "votes", tooley_percentage, "%")
+    print ("Correy recieved: ", correy_votes, "votes", correy_percentage, "%")
+    print ("Winner: ", winner)
+    print ("by: ", winner_percentage, "percentage points")
 
 #print ('Khan received votes: %s' % khan_votes['Khan'])
 #print (khan_votes.most_common())
