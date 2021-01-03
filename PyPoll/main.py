@@ -15,6 +15,11 @@ correy_votes = 0
 tooley_votes = 0
 li_votes = 0
 khan_votes = 0
+khan_percentage = 0
+li_percentage = 0
+tooley_percentage = 0
+correy_percentage = 0
+winner_percentage = 0
 
 #Open the CSV
 with open(pypoll_csv, "r") as csvfile:
@@ -130,13 +135,13 @@ with open(PyPoll_new, 'w', newline='') as csvfile:
     csv_writer.writerow(['-----------------------------'])
 
     # And so on:
-    csv_writer.writerow(['Total Votes:', votecounter])
+    csv_writer.writerow(['Total Votes:', votecounter, '100%'])
     csv_writer.writerow(['-----------------------------'])
-    csv_writer.writerow(['Khan:', khan_votes])
-    csv_writer.writerow(['Correy:', correy_votes])
-    csv_writer.writerow(['Li:', li_votes])
-    csv_writer.writerow(['OTooley:', tooley_votes])
+    csv_writer.writerow(['Khan:', khan_votes, khan_percentage])
+    csv_writer.writerow(['Correy:', correy_votes, correy_percentage])
+    csv_writer.writerow(['Li:', li_votes, li_percentage])
+    csv_writer.writerow(['OTooley:', tooley_votes, tooley_percentage])
     csv_writer.writerow(['-----------------------------'])
-    csv_writer.writerow(['Winner:', 'XX'])
+    csv_writer.writerow(['Winner:', 'NAME', winner_percentage])
 
 
