@@ -4,9 +4,17 @@ import math
 import collections
 from collections import Counter
 
-
 #Path to collect data from the Bank Resources folder
 pypoll_csv = os.path.join("Resources", "election_data.csv")
+
+#Lists to store data
+voter_id = [0]
+country = [1]
+candidate = [2]
+correy_votes = 0
+tooley_votes = 0
+li_votes = 0
+khan_votes = 0
 
 #Open the CSV
 with open(pypoll_csv, "r") as csvfile:
@@ -22,11 +30,6 @@ with open(pypoll_csv, "r") as csvfile:
     #for row in csv_reader:
         #print(row[1])
 
-#Create list of candidates
-myList = ["Khan", 0, "Correy", 0, "O'Toohley", 0, "Li", 0]
-print(myList)
-
-
 #Create a bucket for Total Votes
 poll = open(pypoll_csv, "r")
 data = poll.readline()
@@ -36,38 +39,69 @@ total_votes = 0
 votecounter = 0
 for poll in data:
     votecounter = votecounter + 1
-    
 
+#Count toal votes    
 for line in data:
     r = line.split(",")
     total_votes = total_votes + float(r[0])
 print("Total Votes:", votecounter)
 
 
-#count Khan candidate votes
-#khan_votes = collections.Counter()
-#for row in csv.reader(csvfile, delimiter=','):
-#    khan_votes[row[2]] += 1
+
+
+#Create list of candidates
+myList = ["Khan", "Correy", "O'Tooley", "Li"]
+print(myList)
+
+
+
+#Open the CSV
+with open(pypoll_csv, "r") as csvfile:
+    # CSV reader specifies delimiter and variable that holds contents
+    csv_reader = csv.reader(csvfile, delimiter=",")
+
+    # Read the header row first 
+    csv_header = next(csv_reader)
+
+    #define column two as candidate vote
+    def pypoll_csv(candidates):
+        candidate = str(candidates[2])
+
+    for row in csv_reader:
+        if candidate == 'Khan':
+            khan_votes = khan_votes + 1
+    for row in csv_reader:        
+        if candidate == "Li":
+            li_votes = li_votes + 1
+    for row in csv_reader:        
+        if candidate == "O'Tooley":
+            tooley_votes = tooley_votes + 1
+    for row in csv_reader:        
+        if candidate == "Correy":
+            correy_votes = correy_votes + 1        
+
+    print ("Khan recieved: ", khan_votes, "votes")
+    print ("Li recieved: ", li_votes, "votes")
+    print ("O'Tooley recieved: ", tooley_votes, "votes")
+    print ("Correy recieved: ", correy_votes, "votes")
+
 
 #print ('Khan received votes: %s' % khan_votes['Khan'])
 #print (khan_votes.most_common())
 
 
-khan_votes = 0
-correy_votes = 0
-tooley_votes = 0
-li_votes = 0
+
 #khan_result = Counter(khan_votes)
 #make a dictionary of candidates
-electionresults = {
-    "Khan": len(khan_votes),
-    "Correy": len(correy_votes),
-    "O'Tooley": len(tooley_votes),
-    "Li": len(li_votes)}
+#electionresults = {
+    #'Khan': len(khan_votes),
+    #'Correy': len(correy_votes),
+    #"O'Tooley": len(tooley_votes),
+    #'Li': len(li_votes)}
 #decide winner
-winner = (max(electionresults))
+#winner = (max(electionresults))
 
-print(len(khan_votes))
+#print(len(khan_votes))
 
 
 
@@ -75,21 +109,7 @@ print(len(khan_votes))
 #average = float(total_votes / votecounter)
 #print("The average change is: ", "%.2f" % average)
 
-#max_change = 0
-#for line in data:
-#    r = line.split(",")
-#    max_change = max_change + float(r[1])
-#    if max_change <= max_change:
-#        break
-#print("Maximum change is:", max_change)
 
-
-
-
-#for line in data:
-#    r = line.split(",")
-#    value = float(r[2])
-#    Khan = Khan + value
 
     
 # Specify the file to write to
@@ -98,7 +118,7 @@ output_path = os.path.join("Output", "PyPoll_new.csv")
 PyPoll_new = os.path.join("Output", "PyPoll_new.csv")
 
 # Open the file using "write" mode. Specify the variable to hold the contents
-with open(output_path, 'w', newline='') as csvfile:
+with open(PyPoll_new, 'w', newline='') as csvfile:
 
     # Initialize csv.writer
     csv_writer = csv.writer(csvfile, delimiter=',')
@@ -112,10 +132,10 @@ with open(output_path, 'w', newline='') as csvfile:
     # And so on:
     csv_writer.writerow(['Total Votes:', votecounter])
     csv_writer.writerow(['-----------------------------'])
-    csv_writer.writerow(['Khan:', 'XX'])
-    csv_writer.writerow(['Correy:', 'XX'])
-    csv_writer.writerow(['Li:', 'XX'])
-    csv_writer.writerow(['OTooley:', 'XX'])
+    csv_writer.writerow(['Khan:', khan_votes])
+    csv_writer.writerow(['Correy:', correy_votes])
+    csv_writer.writerow(['Li:', li_votes])
+    csv_writer.writerow(['OTooley:', tooley_votes])
     csv_writer.writerow(['-----------------------------'])
     csv_writer.writerow(['Winner:', 'XX'])
 

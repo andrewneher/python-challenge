@@ -63,7 +63,7 @@ print("The maximum change is:",  max_value )
 print("The minimum change is:",  min_value )
 
 #Create new variable for amount change
-
+#value_change = float(r[1]) 
 
 #print(total_months)
 #data['Profit/Losses'].average
