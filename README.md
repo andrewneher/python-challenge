@@ -1,4 +1,4 @@
-# python-challenge
+# Python Challeng
 
 Andrew Neher's submission for Northwesters Bootcamp Week Three - Python Homework
 PyBank and PyPoll assignments
