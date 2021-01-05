@@ -1,8 +1,6 @@
 import os
 import csv
-import math
-import collections
-from collections import Counter
+
 
 #Path to collect data from the Bank Resources folder
 pypoll_csv = os.path.join("Resources", "election_data.csv")
