@@ -3,7 +3,7 @@
 Andrew Neher's submission for Northwesters Bootcamp Week Three - Python Homework
 PyBank and PyPoll assignments
 
-Completed with assistence with our Slack study group and my tutor, Richa.
+Completed with assistence with our Slack study group: Charlie, Ruth, Michelle, Drew and Nabila and my tutor, Richa.
 
 
 ------
